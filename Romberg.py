@@ -12,7 +12,7 @@ from datetime import datetime
 import numpy as np
 
 TEMPSDUTEST = 3 # en secondes
-DIFFSIGNIFICATIVETAILLEVISAGE=5
+DIFFSIGNIFICATIVETAILLEVISAGE=10
 DIFFSIGNIFICATIVEAXEVISAGE=25
 
 tailleInitiale = 0
@@ -109,15 +109,18 @@ while True:
                     print("à gauche ")
                 else :
                     print("à droite")
+            else:
+                print("Le patient est resté centré")
         
         differenceTailleVisage = abs(tailleFinale - tailleInitiale)
         
         if differenceTailleVisage >= DIFFSIGNIFICATIVETAILLEVISAGE:
             if tailleInitiale<tailleFinale:
-                
                 print("en avant ")
             else:
                 print("en arrière ")
+        else:
+            print("Le patient est resté stable")
             
     for x, y, x2, y2 in tab_face:
         cv2.rectangle(frame, (x, y), (x2, y2), (0, 0, 255), 2)
